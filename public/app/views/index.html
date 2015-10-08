@@ -1,4 +1,4 @@
-<input type="text" ng-model="search" class="search-query" placeholder="Search">
+<input type="text" ng-model="search" class="search-query" placeholder="Search"><br><br>
 <table class="table table-bordered table-striped">
   <thead>
   <tr>
@@ -14,10 +14,14 @@
       <img ng-src="{{project.description}}"/>
     </td>
     <td>
-      <a href="{{project.site}}" target="_blank">{{project.name}} Photo</a>
+      Full Photo of <a href="{{project.site}}" target="_blank">{{project.name}}</a>
     </td>
     <td>
-      <a href="#/edit/{{project.id}}"><i class="icon-pencil"></i>  Edit Details</a>
+      <a href="#/edit/{{project.id}}"><i class="icon-pencil"></i>  Details</a>
+      <br><br>
+      <button class="btn btn-info" ng-click="" ng-show="project.id">Flag</button>
+      &nbsp;
+      <button class="btn btn-danger" ng-click="destroy()" ng-show="project.id">Delete</button>
     </td>
   </tr>
   </tbody>
