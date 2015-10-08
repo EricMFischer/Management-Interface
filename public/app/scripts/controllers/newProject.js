@@ -7,9 +7,4 @@ app.controller('NewProject', function($scope, $location, Project) {
     });
   }
   
-  $scope.destroy = function() {
-    self.original.destroy(function() {
-      $location.path('/');
-    });
-  };
 });
