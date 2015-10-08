@@ -1,0 +1,20 @@
+{
+  "create_e": 1421863039,
+  "msg_id": 478,
+  "uid": 66,
+  "size_x": 640,
+  "size_y": 1136,
+  "version": 3,
+  "media_key": "90c5f7812f0b3ee22241db2f1ad369b861704ff4-",
+  "media_files": [
+    "small_square_anchor.jpg",
+    "anchor.jpg"
+  ],
+  "likes": 2,
+  "path_prefix": "https://cine-yeti-581681.c.cdn77.org/p10/",
+  "json_class": "Msg::Model"
+}
+
+https://cine-yeti-581681.c.cdn77.org/p10/90c5f7812f0b3ee22241db2f1ad369b861704ff4-anchor.jpg
+https://cine-yeti-581681.c.cdn77.org/p10/90c5f7812f0b3ee22241db2f1ad369b861704ff4-small_square_anchor.jpg
+2 likes

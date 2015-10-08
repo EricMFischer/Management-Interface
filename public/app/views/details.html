@@ -1,4 +1,4 @@
-<form name="myForm" class="offset4 span3">
+<form name="myForm" class="offset4 span4">
   <div class="control-group" ng-class="{error: myForm.name.$invalid}">
     <label>Name</label>
     <input type="text" name="name" ng-model="project.name" required>
@@ -17,6 +17,7 @@
  
   <br>
   <a href="#/" class="btn">Cancel</a>
-  <button class="btn btn-primary" ng-click="save()" ng-disabled="isClean() || myForm.$invalid">Save</button>
+  <button class="btn btn-primary" ng-click="save()" ng-disabled="isClean() || myForm.$invalid">Publish</button>
   <button class="btn btn-danger" ng-click="destroy()" ng-show="project.id">Delete</button>
+  <button class="btn btn-info" ng-click="destroy()" ng-show="project.id">Flag</button>
 </form>

@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     activesupport (4.0.3)
       i18n (~> 0.6, >= 0.6.4)
@@ -9,7 +9,7 @@ GEM
       tzinfo (~> 0.3.37)
     atomic (1.1.15)
     daemons (1.1.9)
-    eventmachine (1.0.3)
+    eventmachine (1.0.4)
     i18n (0.6.9)
     minitest (4.7.5)
     multi_json (1.8.4)
@@ -45,3 +45,6 @@ DEPENDENCIES
   sqlite3
   thin
   yajl-ruby
+
+BUNDLED WITH
+   1.10.6
