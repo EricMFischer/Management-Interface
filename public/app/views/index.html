@@ -2,15 +2,20 @@
 <table class="table table-bordered table-striped">
   <thead>
   <tr>
-    <th>Photo</th>
-    <th>Description</th>
+    <th>Thumbnails</th>
+    <th>Photos</th>
     <th><a href="#/new"><i class="icon-plus-sign"></i></a></th>
   </tr>
   </thead>
   <tbody>
   <tr ng-repeat="project in projects | filter:search | orderBy: 'name'">
-    <td><a href="{{project.site}}" target="_blank">{{project.name}}</a></td>
-    <td>{{project.description}}</td>
+    <td>
+      &nbsp; {{project.name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <img ng-src="{{project.description}}"/>
+    </td>
+    <td>
+      <a href="{{project.site}}" target="_blank">{{project.name}} Photo</a>
+    </td>
     <td>
       <a href="#/edit/{{project.id}}"><i class="icon-pencil"></i>  Edit Details</a>
     </td>
