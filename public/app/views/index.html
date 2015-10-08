@@ -8,13 +8,13 @@
   </tr>
   </thead>
   <tbody>
-  <tr ng-repeat="project in projects | filter:search | orderBy: 'name'">
+  <tr ng-repeat="project in projects | filter:search">
     <td>
       &nbsp; {{project.name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <img ng-src="{{project.description}}"/>
+      <img style="max-width:175px; max-height:175px" ng-src="{{project.description}}"/>
     </td>
     <td>
-      Full Photo of <a href="{{project.site}}" target="_blank">{{project.name}}</a>
+      <a href="{{project.site}}" target="_blank">{{project.name}}</a> Full Photo
     </td>
     <td>
       <a href="#/edit/{{project.id}}"><i class="icon-pencil"></i>  Details</a>

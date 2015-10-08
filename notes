@@ -38,6 +38,7 @@ get params ?query=string
 
 0) Figure out the layout/design of UI and the endpoints each button will hit. This will give insight into how I should interface with models on the server side. I can temporarily have json data lie in the client-side and simply have an Angular display.
 1) Make UI with AngularJS (make it hit the endpoints as I want them to be) -- make the requests do the proper thing. get would ask for something, post and publish would send along, in the request body, the data to save.
+
 2) Once, the UI is done, start implementing the actual requests, starting with GET.
 3) Mock out endpoints and get server to respond with appropriate messages (e.g. 200 ok). 
 4) Migrate data from content.json in Ruby app to MongoDB database.
