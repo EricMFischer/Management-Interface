@@ -1,4 +1,4 @@
-app.controller('EditProject', function($scope, $location, $routeParams, Project) {
+app.controller('EditProject', function($scope, $rootScope, $location, $routeParams, Project) {
   var self = this;
 
   Project.get({id: $routeParams.id}, function(project) {
@@ -21,4 +21,8 @@ app.controller('EditProject', function($scope, $location, $routeParams, Project)
       $location.path('/');
     });
   };
+
+  $scope.$on('projects', function (event, response) {
+    $scope.projects = response; // array of projects
+  });
 });

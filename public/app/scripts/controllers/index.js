@@ -1,4 +1,4 @@
-app.controller('Index', function($scope, Project) {
+app.controller('Index', function($scope, $rootScope, Project) {
 
   var JSONdata = 
   {
@@ -1177,8 +1177,8 @@ app.controller('Index', function($scope, Project) {
   $scope.projects = [];
   JSONdata.feed.forEach(function(obj) {
     var object = {};
-    object.description = obj.path_prefix + obj.media_key + obj.media_files[0]; // thumbnail
-    object.site = obj.path_prefix + obj.media_key + obj.media_files[1]; // photo
+    object.thumbnail = obj.path_prefix + obj.media_key + 'anchor.jpg'; // thumbnail
+    object.site = obj.path_prefix + obj.media_key + 'anchor.jpg'; // photo
     object.x = obj.size_x || 'n/a';
     object.y = obj.size_y || 'n/a';
     object.likes = obj.likes || 0;
@@ -1189,6 +1189,8 @@ app.controller('Index', function($scope, Project) {
   });
   console.log('$scope.projects: ', $scope.projects);
 
+  var projects = $scope.projects; // array
+  $rootScope.$broadcast('projects', projects);
 
 
 
