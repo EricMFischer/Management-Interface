@@ -1175,13 +1175,18 @@ app.controller('Index', function($scope, $rootScope, Project) {
   // console.log('$scope.lastProjects: ', $scope.lastProjects);
 
   $scope.projects = [];
+  var id = 0;
   JSONdata.feed.forEach(function(obj) {
     var object = {};
+    id++;
+    object.id = id;
+
     object.thumbnail = obj.path_prefix + obj.media_key + 'anchor.jpg'; // thumbnail
     object.site = obj.path_prefix + obj.media_key + 'anchor.jpg'; // photo
     object.x = obj.size_x || 'N/A';
     object.y = obj.size_y || 'N/A';
     object.likes = obj.likes || 0;
+    object.time = (new Date(obj.create_e * 1000)).toDateString();
 
     for (var i=0; i<obj.media_files.length; i++) {
       if (obj.media_files[i] === "movie.mp4") {
@@ -1197,7 +1202,5 @@ app.controller('Index', function($scope, $rootScope, Project) {
 
   var projects = $scope.projects; // array
   $rootScope.$broadcast('projects', projects);
-
-
 
 });
