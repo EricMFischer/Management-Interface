@@ -1186,7 +1186,6 @@ app.controller('Index', function($scope, $rootScope, Project) {
     for (var i=0; i<obj.media_files.length; i++) {
       if (obj.media_files[i] === "movie.mp4") {
         object.movie = obj.path_prefix + obj.media_key + 'movie.mp4';
-        $scope.movie = true;
       }
     }
 
