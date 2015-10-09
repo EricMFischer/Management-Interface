@@ -22,7 +22,7 @@ app.controller('EditProject', function($scope, $rootScope, $location, $routePara
     });
   };
 
-  $scope.$on('projects', function (event, response) {
-    $scope.projects = response; // array of projects
-  });
+  // $scope.$on('projects', function (event, response) {
+  //   $scope.projects = response; // array of projects
+  // });
 });

@@ -1179,9 +1179,16 @@ app.controller('Index', function($scope, $rootScope, Project) {
     var object = {};
     object.thumbnail = obj.path_prefix + obj.media_key + 'anchor.jpg'; // thumbnail
     object.site = obj.path_prefix + obj.media_key + 'anchor.jpg'; // photo
-    object.x = obj.size_x || 'n/a';
-    object.y = obj.size_y || 'n/a';
+    object.x = obj.size_x || 'N/A';
+    object.y = obj.size_y || 'N/A';
     object.likes = obj.likes || 0;
+
+    for (var i=0; i<obj.media_files.length; i++) {
+      if (obj.media_files[i] === "movie.mp4") {
+        object.movie = obj.path_prefix + obj.media_key + 'movie.mp4';
+        $scope.movie = true;
+      }
+    }
 
     if (obj.media_key !== undefined) {
       $scope.projects.push(object); 
