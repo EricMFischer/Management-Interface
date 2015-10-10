@@ -9,6 +9,7 @@ app.controller('EditProject', function($scope, $rootScope, $location, $routePara
     for (var i=0; i<Project.prototype.projects.length; i++) {
       if (Project.prototype.projects[i].id == $routeParams.id) {
         $scope.photo = Project.prototype.projects[i];
+        console.log('$scope.photo: ', $scope.photo);
       }
     }
     $scope.project = new Project(self.original);
