@@ -1,19 +1,16 @@
 app.controller('EditProject', function($scope, $rootScope, $location, $routeParams, Project) {
 
-  var projects;
-  $scope.$on('projects', function (event, response) {
-    projects = response; // array of projects
-  });
-
   var self = this;
+
+  console.log('EP projects: ', Project.prototype.projects);
 
   Project.get({id: $routeParams.id}, function(project) {
     self.original = project;
-    // for (var i=0; i<projects.length; i++) {
-    //   if (projects[i].id === $routeParams.id) {
-    //     project.thumbnail = projects[i].thumbnail;
-    //   }
-    // }
+    for (var i=0; i<Project.prototype.projects.length; i++) {
+      if (Project.prototype.projects[i].id == $routeParams.id) {
+        $scope.photo = Project.prototype.projects[i];
+      }
+    }
     $scope.project = new Project(self.original);
   });
 

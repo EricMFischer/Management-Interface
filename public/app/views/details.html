@@ -10,14 +10,14 @@
 
   <div class="control-group" ng-class="{error: myForm.thumbnail.$invalid}">
     <label>Thumbnail URL</label>
-    <input type="url" name="thumbnail" placeholder="{{project.thumbnail}}" ng-model="project.thumbnail" required>
+    <input type="url" name="thumbnail" ng-model="project.thumbnail" required>
     <span class="help-inline" ng-show="myForm.thumbnail.$error.required">Required</span>
     <span class="help-inline" ng-show="myForm.thumbnail.$error.url">Not a URL</span>
   </div>
  
   <div class="control-group" ng-class="{error: myForm.site.$invalid}">
     <label>Photo URL</label>
-    <input type="url" name="site" placeholder="{{project.site}}" ng-model="project.site" required>
+    <input type="url" name="site" ng-model="project.site" required>
     <span class="help-inline" ng-show="myForm.site.$error.required">Required</span>
     <span class="help-inline" ng-show="myForm.site.$error.url">Not a URL</span>
   </div>
@@ -27,3 +27,5 @@
   <button class="btn btn-primary" ng-click="save()" ng-disabled="isClean() || myForm.$invalid">Publish</button>
   <!-- <button class="btn btn-danger" ng-click="destroy()" ng-show="project.site">Delete</button> -->
 </form>
+
+<!-- <img ng-src="{{photo.thumbnail}}"> -->
