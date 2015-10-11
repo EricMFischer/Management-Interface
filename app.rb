@@ -5,11 +5,8 @@ require 'active_support'
 # rack provides an interface between Ruby web frameworks like
 # Sinatra and the actual webserver like Webrick or Thin
 
-# JSON is human readable, language-agnostic, and integrates 
-# well with javascript --> excellent serialization format
-
 # ActiveSupport provides Ruby language extensions and utilities
-# it's 1) a wrapper for JSON obj, and 2) provides JSON def. for Ruby objs
+# It's a wrapper for JSON obj and provides JSON def. for Ruby objs
 # ActiveSupport::JSON.backend = 'Yajl'
 
 # Sqlite Memory Database
@@ -19,10 +16,18 @@ DB = Sequel.sqlite('projects.db')
 DB.create_table :projects do
   primary_key :id
   String :name
-  String :description
-  String :site
+  String :photo_url
+  String :thumbnail_url
+  Number :width
+  Number :height
+  Number :likes
+  String :movie_url
+  Boolean :published
+  Boolean :flagged
+  Date :created_at
 end unless DB.table_exists?(:projects)
 
+# builds params hash from HTTP request
 use Rack::PostBodyToParams
 
 # where static files should be served from
@@ -32,6 +37,9 @@ get '/' do
   File.read(File.join('public', 'index.html'))
 end
 
+# begin-rescue like try-catch block
+# logger provides info in terminal
+# .inspect converts to string
 get '/projects' do
   begin
     results = DB[:projects].all
