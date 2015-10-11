@@ -6,6 +6,7 @@ app.controller('EditProject', function($scope, $rootScope, $location, $routePara
 
   Project.get({id: $routeParams.id}, function(project) {
     self.original = project;
+    console.log('the id: ', $routeParams.id);
 
     for (var i=0; i<Project.prototype.projects.length; i++) {
       if (Project.prototype.projects[i].id == $routeParams.id) {
