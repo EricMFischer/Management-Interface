@@ -2,7 +2,10 @@ require 'sinatra'
 require 'rack/post-body-to-params'
 require 'sequel'
 require 'active_support'
+# rack provides an interface between Ruby web frameworks like
+# Sinatra and the actual webserver like Webrick or Thin
 
+# provides Ruby language extensions and utilities
 ActiveSupport::JSON.backend = 'Yajl'
 
 # Sqlite Memory Database

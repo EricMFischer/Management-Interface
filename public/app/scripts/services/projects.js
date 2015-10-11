@@ -1,5 +1,5 @@
 app.factory('Project', function($resource){
-  var Project = $resource('/projects/:id', null, { update: { method: 'PUT' }});
+  var Project = $resource('/projects/:id', null, { update: { method: 'PUT' }}); // declaring custom action that extends the default $resource actions
 
   var JSONdata = 
   {
@@ -1175,32 +1175,41 @@ app.factory('Project', function($resource){
   Project.prototype.projects = [];
   var id = 0;
   JSONdata.feed.forEach(function(obj) {
-    var object = {};
+    var project = {};
     id++;
-    object.id = id;
-    object.thumbnail = obj.path_prefix + obj.media_key + 'anchor.jpg'; // thumbnail
-    object.site = obj.path_prefix + obj.media_key + 'anchor.jpg'; // photo
-    object.x = obj.size_x || 'N/A';
-    object.y = obj.size_y || 'N/A';
-    object.likes = obj.likes || 0;
-    object.time = (new Date(obj.create_e * 1000)).toDateString();
+    project.id = id;
+    project.thumbnail = obj.path_prefix + obj.media_key + 'anchor.jpg'; // thumbnail
+    project.site = obj.path_prefix + obj.media_key + 'anchor.jpg'; // photo
+    project.x = obj.size_x || 'N/A';
+    project.y = obj.size_y || 'N/A';
+    project.likes = obj.likes || 0;
+    project.time = (new Date(obj.create_e * 1000)).toDateString();
     for (var i=0; i<obj.media_files.length; i++) {
       if (obj.media_files[i] === 'movie.mp4') {
-        object.movie = obj.path_prefix + obj.media_key + 'movie.mp4';
+        project.movie = obj.path_prefix + obj.media_key + 'movie.mp4';
       }
     }
     if (obj.media_key !== undefined) {
-      Project.prototype.projects.push(object); 
+      Project.prototype.projects.push(project); 
     }
   });
 
 
   Project.prototype.update = function(cb) {
+    console.log('this: ', this);
+    // invoking $resource object initially returns an empty obj/arr, and once the data is returned from the server, is populated. this is useful because it's usually attached to a model being rendered
     return Project.update({ id: this.id }, this, cb);
   };
   
   Project.prototype.destroy = function(cb) {
     return Project.remove({id: this.id}, cb);
+  };
+
+  Project.prototype.flag = function(cb) {
+    return Project.get({ id: this.id }, function(project) {
+      project.flag = true;
+      project.$save();
+    }
   };
 
   return Project;

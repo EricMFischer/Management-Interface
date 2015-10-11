@@ -13,6 +13,7 @@ app.controller('EditProject', function($scope, $rootScope, $location, $routePara
       }
     }
     $scope.project = new Project(self.original);
+    console.log('$scope.project', $scope.project);
   });
 
   $scope.isClean = function() {
@@ -28,6 +29,12 @@ app.controller('EditProject', function($scope, $rootScope, $location, $routePara
   $scope.save = function() {
     $scope.project.update(function() {
       $location.path('/');
+    });
+  };
+
+  $scope.flag = function() {
+    $scope.project.flag(function() {
+      // $location.path('/');
     });
   };
 
