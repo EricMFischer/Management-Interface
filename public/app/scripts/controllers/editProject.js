@@ -35,9 +35,16 @@ app.controller('EditProject', function($scope, $rootScope, $location, $routePara
     });
   };
 
+  $scope.publish = function() {
+    $scope.project.publish(function() {
+      $location.path('/');
+    });
+  };
+
+  // cb not being hit yet
   $scope.flag = function() {
     $scope.project.flag(function() {
-      // $location.path('/');
+      $location.path('/');
     });
   };
 
