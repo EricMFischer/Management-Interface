@@ -69,13 +69,14 @@ get '/projects/:id' do |id|
   DB[:projects].where(id: id).first.to_json
 end
 
+# for published and flagged operations
 put '/projects/:id' do |id|
-  DB[:projects].where(id: id).update(name: params[:name], description: params[:description], site: params[:site])
-  DB[:projects].where(id: id).first.to_json
+  allowedParams = params.select { |k,v| ['published', 'flagged'].include?(k) }
+  DB[:projects].where(id: params['id']).update(allowedParams)
+  DB[:projects].where(id: params['id']).first.to_json
 end
 
 delete '/projects/:id' do |id|
   DB[:projects].where(id: id).delete
   '{"status": "success"}'
 end
-
