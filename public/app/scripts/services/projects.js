@@ -1194,13 +1194,19 @@ app.factory('Project', function($resource){
 
   Project.prototype.update = function(cb) {
     // invoking $resource object initially returns an empty obj/arr
-    // once data is returned from the server, obj is populated (useful bc obj is attached to a rendered model)
+    // once data is returned from the server, obj is populated (useful, as obj is attached to rendered model)
     // 'this' is the obj we are updating
     return Project.update({ id: this.id }, this, cb);
   };
   
   Project.prototype.destroy = function(cb) {
-    return Project.remove({id: this.id}, cb);
+    return Project.remove({ id: this.id }, cb);
+  };
+
+  Project.prototype.publish = function() {
+    return Project.get({ id: this.id }, function(project) {
+      Project.update({ id: project.id }, { published: true });
+    });
   };
 
   Project.prototype.flag = function() {
