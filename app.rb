@@ -50,9 +50,17 @@ get '/projects' do
   end
 end
 
+#last line before 'end' acts as return statement
 post '/projects' do
   puts params.inspect
-  data = { name: params[:name], description: params[:description], site: params[:site] }
+  data = { 
+    name: params[:name], 
+    photo_url: params[:photo_url], 
+    thumbnail_url: params[:thumbnail_url],
+    movie_url: params[:movie_url],
+    likes: params[:likes],
+    created_at: Date.today
+  }
   record = DB[:projects].insert(data)
   data.to_json
 end
