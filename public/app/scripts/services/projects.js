@@ -1178,7 +1178,7 @@ app.factory('Project', function($resource){
     var project = {};
     id++;
     project.id = id;
-    project.thumbnail = obj.path_prefix + obj.media_key + 'anchor.jpg'; // thumbnail
+    project.description = obj.path_prefix + obj.media_key + 'anchor.jpg'; // thumbnail
     project.site = obj.path_prefix + obj.media_key + 'anchor.jpg'; // photo
     project.x = obj.size_x || 'N/A';
     project.y = obj.size_y || 'N/A';
@@ -1196,8 +1196,8 @@ app.factory('Project', function($resource){
 
 
   Project.prototype.update = function(cb) {
-    console.log('this: ', this);
-    // invoking $resource object initially returns an empty obj/arr, and once the data is returned from the server, is populated. this is useful because it's usually attached to a model being rendered
+    // invoking $resource object initially returns an empty obj/arr. once the data is returned from the server, it is populated.this is useful because it's usually attached to a model being rendered
+    // 'this' is the obj we are updating
     return Project.update({ id: this.id }, this, cb);
   };
   
@@ -1205,11 +1205,11 @@ app.factory('Project', function($resource){
     return Project.remove({id: this.id}, cb);
   };
 
-  Project.prototype.flag = function(cb) {
+  Project.prototype.flag = function() {
     return Project.get({ id: this.id }, function(project) {
       project.flag = true;
       project.$save();
-    }
+    });
   };
 
   return Project;
