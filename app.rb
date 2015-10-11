@@ -25,6 +25,7 @@ end unless DB.table_exists?(:projects)
 
 use Rack::PostBodyToParams
 
+# where static files should be served from
 set :public_folder, File.dirname(__FILE__) + '/public'
 
 get '/' do

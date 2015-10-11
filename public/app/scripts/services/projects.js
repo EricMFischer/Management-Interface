@@ -1,5 +1,5 @@
 app.factory('Project', function($resource){
-  var Project = $resource('/projects/:id', null, { update: { method: 'PUT' }}); // declaring custom action that extends the default $resource actions
+  var Project = $resource('/projects/:id', null, { update: { method: 'PUT' }}); // declaring a custom action that extends the default $resource actions
 
   var JSONdata = 
   {
@@ -1173,11 +1173,8 @@ app.factory('Project', function($resource){
   };
 
   Project.prototype.projects = [];
-  var id = 0;
   JSONdata.feed.forEach(function(obj) {
     var project = {};
-    id++;
-    project.id = id;
     project.description = obj.path_prefix + obj.media_key + 'anchor.jpg'; // thumbnail
     project.site = obj.path_prefix + obj.media_key + 'anchor.jpg'; // photo
     project.x = obj.size_x || 'N/A';
@@ -1196,7 +1193,8 @@ app.factory('Project', function($resource){
 
 
   Project.prototype.update = function(cb) {
-    // invoking $resource object initially returns an empty obj/arr. once the data is returned from the server, it is populated.this is useful because it's usually attached to a model being rendered
+    // invoking $resource object initially returns an empty obj/arr
+    // once data is returned from the server, obj is populated (useful bc obj is attached to a rendered model)
     // 'this' is the obj we are updating
     return Project.update({ id: this.id }, this, cb);
   };
@@ -1207,8 +1205,7 @@ app.factory('Project', function($resource){
 
   Project.prototype.flag = function() {
     return Project.get({ id: this.id }, function(project) {
-      project.flag = true;
-      project.$save();
+      Project.update({ id: project.id }, { flagged: true });
     });
   };
 
