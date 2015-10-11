@@ -11,16 +11,17 @@
   <tr ng-repeat="project in projects | filter:search">
     <td>
       &nbsp; {{project.name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <img style="max-width:175px; max-height:175px" ng-src="{{project.site}}"/>
+      <img style="max-width:175px; max-height:175px" ng-src="{{project.thumbnail_url}}"/>
       &nbsp;&nbsp;
       Likes: {{project.likes}}
+      Flagged: {{project.flagged}}
     </td>
     <td>
       <a href="{{project.site}}" target="_blank">{{project.name}} Full Photo</a>
       <br>
-      URL: {{project.site}}
+      URL: {{project.photo_url}}
       <br>
-      Created: {{project.time}}
+      Created: {{project.created_at}}
       <br>
       <a href="{{project.movie}}" target="_blank">{{project.movie}}</a>
     </td>
