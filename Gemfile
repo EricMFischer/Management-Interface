@@ -9,4 +9,3 @@ gem 'yajl-ruby'
 gem 'thin'
 gem 'sinatra', '1.3.3'
 gem 'rack-post-body-to-params'
-
