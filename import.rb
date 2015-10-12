@@ -24,9 +24,14 @@ json = JSON.parse(File.read('content.json'))
 
 json['feed'].each do |content|
   data = {
-    name: content['name'],
-    photo_url: content['photo_url'],
-    created_at: Date.today
+    photo_url: content['path_prefix'] + content['media_key'] + 'anchor.jpg',
+    thumbnail_url: content['path_prefix'] + content['media_key'] + 'small_square_anchor.jpg',
+    width: content['size_x'],
+    height: content['size_y'],
+    likes: content['likes'],
+    movie_url: content['path_prefix'] + content['media_key'] + 'movie.mp4',
+    created_at: content['create_e']
+    # not Date.today, right?
   }
   DB[:projects].insert(data)
 end
