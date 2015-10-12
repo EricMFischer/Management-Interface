@@ -11,23 +11,24 @@
   <tr ng-repeat="project in projects | filter:search">
     <td>
       &nbsp; {{project.name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <img style="max-width:175px; max-height:175px" ng-src="{{project.thumbnail_url}}"/>
+      <img style="max-width:175px; max-height:175px" ng-src="{{project.photo_url}}"/>
       &nbsp;&nbsp;
-      Likes: {{project.likes}}
-      Flagged: {{project.flagged}}
     </td>
     <td>
-      <a href="{{project.site}}" target="_blank">Full Photo</a>
+      <a href="{{project.photo_url}}" target="_blank">Full Photo</a>
       <br>
       URL: {{project.photo_url}}
       <br>
-      Created: {{project.created_at}}
+      Likes: {{project.likes}}
       <br>
-      <a href="{{project.movie}}" target="_blank">{{project.movie}}</a>
+      Flagged: {{project.flagged}}
+      <br>
+      Published: {{project.published}}
+      <!-- <br>
+      <a href="{{project.movie_url}}" target="_blank">{{project.movie_url}}</a> -->
     </td>
     <td>
       <a href="#/edit/{{project.id}}"><i class="icon-pencil"></i>  Details</a>
-      <!-- <button class="btn btn-info" ng-click="flag()">Flag</button> -->
     </td>
   </tr>
   </tbody>

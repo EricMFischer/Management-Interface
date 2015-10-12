@@ -31,7 +31,6 @@ json['feed'].each do |content|
     likes: content['likes'],
     movie_url: content['path_prefix'] + content['media_key'] + 'movie.mp4',
     created_at: content['create_e']
-    # not Date.today, right?
   }
   DB[:projects].insert(data)
 end

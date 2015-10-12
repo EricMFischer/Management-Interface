@@ -2,40 +2,39 @@
   <div class="control-group" ng-class="{error: myForm.name.$invalid}">
     <label>Name</label>
     <input type="text" name="name" ng-model="project.name">
-    <!-- <span class="help-inline" ng-show="myForm.name.$error.required">Required</span> -->
   </div>
 
   <div class="control-group" ng-class="{error: myForm.thumbnail_url.$invalid}">
     <label>Thumbnail URL</label>
     <input type="url" name="thumbnail_url" value="{{photo.thumbnail_url}}" ng-model="project.thumbnail_url" required>
-    <!-- <span class="help-inline" ng-show="myForm.thumbnail.$error.required">Required</span>
-    <span class="help-inline" ng-show="myForm.thumbnail.$error.url">Not a URL</span> -->
   </div>
  
   <div class="control-group" ng-class="{error: myForm.photo_url.$invalid}">
     <label>Photo URL</label>
     <input type="url" name="site" value="{{photo.photo_url}}" ng-model="project.photo_url">
-    <!-- <span class="help-inline" ng-show="myForm.site.$error.required">Required</span> -->
-    <!-- <span class="help-inline" ng-show="myForm.site.$error.url">Not a URL</span> -->
   </div>
  
   <br>
   <a href="#/" class="btn">Cancel</a>
   <button class="btn btn-primary" ng-click="save()" ng-disabled="isClean() || myForm.$invalid">Save</button>
   <button class="btn btn-success" ng-click="publish()" ng-disabled="myForm.$invalid">Publish</button>
+  <br><br>
   <button class="btn btn-info" ng-click="flag()">Flag</button>
   <button class="btn btn-danger" ng-click="destroy()">Delete</button>
 
   <br><br>
-  Width: {{photo.x}} px
+  Width: {{project.width}} px
   <br>
-  Height: {{photo.y}} px
+  Height: {{project.height}} px
   <br>
-  Created: {{photo.time}}
+  Likes: {{project.likes}}
   <br>
-  <!-- <a href="{{photo.movie}}" target="_blank">{{photo.movie}}</a> -->
+  Published: {{project.published}}
   <br>
-  <img ng-src="{{photo.photo_url}}">
+  Flagged: {{project.flagged}}
+  <br>
+  <br>
+  <img ng-src="{{project.photo_url}}">
 
 </form>
 

@@ -41,4 +41,4 @@ get params ?query=string
 
 2) Once, the UI is done, start implementing the actual requests, starting with GET.
 3) Mock out endpoints and get server to respond with appropriate messages (e.g. 200 ok). 
-4) Migrate data from content.json in Ruby app to MongoDB database.
+4) Migrate data from content.json in Ruby app to SQLite database.
