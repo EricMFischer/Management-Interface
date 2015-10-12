@@ -6,7 +6,7 @@
 
   <div class="control-group" ng-class="{error: myForm.thumbnail_url.$invalid}">
     <label>Thumbnail URL</label>
-    <input type="url" name="thumbnail_url" value="{{photo.thumbnail_url}}" ng-model="project.thumbnail_url" required>
+    <input type="url" name="thumbnail_url" value="{{photo.thumbnail_url}}" ng-model="project.thumbnail_url">
   </div>
  
   <div class="control-group" ng-class="{error: myForm.photo_url.$invalid}">
@@ -23,17 +23,12 @@
   <button class="btn btn-danger" ng-click="destroy()">Delete</button>
 
   <br><br>
-  Width: {{project.width}} px
-  <br>
-  Height: {{project.height}} px
-  <br>
   Likes: {{project.likes}}
   <br>
   Published: {{project.published}}
   <br>
   Flagged: {{project.flagged}}
-  <br>
-  <br>
+  <br><br>
   <img ng-src="{{project.photo_url}}">
 
 </form>
