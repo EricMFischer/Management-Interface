@@ -1,17 +1,17 @@
 <link href="css/bootstrap.min.css" rel="stylesheet">
 <link href="css/thumbnail-gallery.css" rel="stylesheet">
 
-<body class="page">
+<body>
   <input type="text" ng-model="search" class="search-query" placeholder="Search">
   &nbsp;&nbsp;&nbsp;&nbsp;
-  <a href="#/new"><i class="icon-plus-sign"></i></a>
+  <a href="#/new"><i class="icon-plus-sign"></i>  Add Photo</a>
   <br><br>
 
   <div class="container">
     <div class="row">
       <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="project in projects | filter:search">
           <a class="thumbnail" href="#/edit/{{project.id}}">
-            <img class="img-responsive" style="max-width:370px; max-height:370px" ng-src="{{project.photo_url}}">
+            <img class="img-responsive" style="max-width:400px; max-height:400px" ng-src="{{project.photo_url}}">
             {{project.name}}
             <br>
             <a href="{{project.photo_url}}" target="_blank">Full Photo</a>
