@@ -4,7 +4,7 @@ CRUD application created with Ruby/Sinatra and AngularJS.
 
 ## Usage
 
-Run 'ruby app.rb' from the root directory.
+Run 'ruby app.rb' from the root directory, and then go to localhost:4567.
 
 ## Contributing
 
