@@ -2,6 +2,7 @@ require 'sinatra'
 require 'rack/post-body-to-params'
 require 'sequel'
 require 'active_support'
+require 'json'
 # rack provides an interface between Ruby web frameworks like
 # Sinatra and the actual webserver like Webrick or Thin
 
@@ -30,15 +31,15 @@ end unless DB.table_exists?(:projects)
 # builds params hash from HTTP request
 use Rack::PostBodyToParams
 
-# where static files should be served from
+# where static files should be served from --> './public'
 set :public_folder, File.dirname(__FILE__) + '/public'
 
 get '/' do
   File.read(File.join('public', 'index.html'))
 end
 
-# begin-rescue like try-catch block
-# logger provides info in terminal
+# begin-rescue is like try-catch block
+# logger.info provides general info to terminal
 # .inspect converts to string
 get '/projects' do
   begin
