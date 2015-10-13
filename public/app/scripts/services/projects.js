@@ -15,12 +15,10 @@ app.factory('Project', function($resource, $location){
   };
   
   Project.prototype.destroy = function(cb) {
-    console.log ('this in destroy: ', this);
     return Project.remove({ id: this.id }, cb);
   };
 
   Project.prototype.publish = function() {
-    console.log ('this in publish: ', this);
     return Project.get({ id: this.id }, function(project) {
       Project.update({ id: project.id }, { published: !project.published });
       $location.path('/');
@@ -28,7 +26,6 @@ app.factory('Project', function($resource, $location){
   };
 
   Project.prototype.flag = function() {
-    console.log ('this in flag: ', this);
     return Project.get({ id: this.id }, function(project) {
       Project.update({ id: project.id }, { flagged: !project.flagged });
       $location.path('/');

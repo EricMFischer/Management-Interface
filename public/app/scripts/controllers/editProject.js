@@ -3,7 +3,6 @@ app.controller('EditProject', function($scope, $rootScope, $location, $routePara
   var self = this;
 
   Project.get({id: $routeParams.id}, function(project) {
-    console.log('project in EditProject: ', project);
     self.original = project;
     $scope.project = new Project(self.original);
   });
@@ -19,7 +18,6 @@ app.controller('EditProject', function($scope, $rootScope, $location, $routePara
   };
 
   $scope.save = function() {
-    console.log('$scope.project in save fn: ', $scope.project);
     $scope.project.update(function() {
       $location.path('/');
     });
