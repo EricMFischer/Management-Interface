@@ -26,19 +26,28 @@ Extra points for putting the JSON data into a database and constructing the JSON
 |              |
 +--------------+
 
+Restful API: communicate over HTTP with standard verbs, base URI, media type (e.g. JSON), hyptertext links to reference state
+
+Client/server separation, statelessness (no client context stored on server between requests), cacheability, layered system (intermediary servers, scalability, and load balancers), and uniform interface
+
+Uniform interface: 1) resources (html, xml, json) are conceptually separate from representations returned to client, 2) representations of resources contain all critical info
+
 http status codes
 CRUD
 
 get params ?query=string
 / get -> get everything
 /?id GET -> get a single resource
-/publish POST -> Create new ; put -> update old based on uid
+/publish POST -> Create new; put -> update old based on id
 /flag PUT -> add boolean true to resource
-/delete DELETE -> remove the resource from the database (OR! set a deleted flag, and remove from get results) (set a flag on model that signals this is deleted) (Also, all you have to send to server is the id of what you're deleting--then any subsequent get request would not be able to locate it, because the boolean flag is false) (So I should modify get requests to only get things with boolean flag set to true)
+/delete DELETE -> remove the resource from the database (or set a deleted flag, and remove from GET results) (set a flag on model that signals this is deleted). I'd send to the server the id of what I'm deleting--then any subsequent GET request would not be able to locate it, because the boolean flag is false. So I should modify GET requests to only get things with the boolean flag set to true.
 
-0) Figure out the layout/design of UI and the endpoints each button will hit. This will give insight into how I should interface with models on the server side. I can temporarily have json data lie in the client-side and simply have an Angular display.
-1) Make UI with AngularJS (make it hit the endpoints as I want them to be) -- make the requests do the proper thing. get would ask for something, post and publish would send along, in the request body, the data to save.
+0) Figure out the layout/design of UI and the endpoints each button will hit. This will give insight into how I should interface with models on the server side. I can temporarily have the json data lie on the client-side.
 
-2) Once, the UI is done, start implementing the actual requests, starting with GET.
+1) Make UI with AngularJS (make it hit the appropriate endpoints / make the requests do the proper thing). GET would ask for something, post and publish would send along, in the request body, the data to save.
+
+2) Once the UI is done, start implementing the actual requests, starting with GET.
+
 3) Mock out endpoints and get server to respond with appropriate messages (e.g. 200 ok). 
-4) Migrate data from content.json in Ruby app to SQLite database.
+
+4) Migrate data from content.json in the Ruby app to a SQLite database.

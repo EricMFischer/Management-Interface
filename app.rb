@@ -4,7 +4,7 @@ require 'sequel'
 require 'active_support'
 require 'json'
 # rack provides an interface between Ruby web frameworks like
-# Sinatra and the actual webserver like Webrick or Thin
+# Sinatra and the actual webserver like WEBrick or Thin
 
 # ActiveSupport provides Ruby language extensions and utilities
 # It's a wrapper for JSON obj and provides JSON def. for Ruby objs
@@ -12,6 +12,11 @@ require 'json'
 
 # Sqlite Memory Database
 DB = Sequel.sqlite('projects.db')
+
+# :symbols are immutable identifiers. bc they are never changed,
+# they are instantiated and are compared faster than strings
+# ruby uses same object everytime you reference the symbol, saving
+# memory. this prevents it from being instantiated repeatedly
 
 # create an items table
 DB.create_table :projects do
@@ -51,7 +56,7 @@ get '/projects' do
   end
 end
 
-#last line before 'end' acts as return statement
+# last line before 'end' acts as return statement
 post '/projects' do
   puts params.inspect
   data = { 
