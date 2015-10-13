@@ -1,10 +1,10 @@
-# Yeti Campus Stories Management Interface
+# Yeti Campus Stories - Management Interface
 
-CRUD application created with Ruby/Sinatra and AngularJS.
+Ths is a CRUD application created with Ruby/Sinatra and AngularJS
 
 ## Usage
 
-Run 'ruby app.rb' from the root directory.
+Run 'ruby app.rb' from the root directory
 
 ## Contributing
 
