@@ -75,9 +75,11 @@ get '/projects/:id' do |id|
   DB[:projects].where(id: id).first.to_json
 end
 
-# for published and flagged operations
+# for published and flagged operations, and also general updates
 put '/projects/:id' do |id|
-  allowedParams = params.select { |k,v| ['published', 'flagged'].include?(k) }
+  allowedParams = params.select do |k,v|
+    ['published','flagged','name','photo_url','thumbnail_url','movie_url'].include?(k)
+  end
   DB[:projects].where(id: params['id']).update(allowedParams)
   DB[:projects].where(id: params['id']).first.to_json
 end

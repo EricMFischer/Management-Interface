@@ -11,11 +11,11 @@
  
   <div class="control-group" ng-class="{error: myForm.photo_url.$invalid}">
     <label>Photo URL</label>
-    <input type="url" name="site" ng-model="project.photo_url">
+    <input type="url" name="photo_url" ng-model="project.photo_url">
   </div>
  
   <br>
-  <a href="#/" class="btn">Cancel</a>
+  <a href="#/" class="btn">Back</a>
   <button class="btn btn-primary" ng-click="save()" ng-disabled="isClean() || myForm.$invalid">Save</button>
   <button class="btn btn-success" ng-click="publish()" ng-disabled="myForm.$invalid">Publish</button>
   <br><br>

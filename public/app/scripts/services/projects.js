@@ -1,4 +1,4 @@
-app.factory('Project', function($resource){
+app.factory('Project', function($resource, $location){
   // $resource: factory that creates a resource object, which lets you interact with RESTful server-side data sources
   // actions: get, save, query, remove, delete
   // methods: $save, $remove, $delete
@@ -19,17 +19,19 @@ app.factory('Project', function($resource){
     return Project.remove({ id: this.id }, cb);
   };
 
-  Project.prototype.publish = function(cb) {
+  Project.prototype.publish = function() {
     console.log ('this in publish: ', this);
     return Project.get({ id: this.id }, function(project) {
       Project.update({ id: project.id }, { published: !project.published });
+      $location.path('/');
     });
   };
 
-  Project.prototype.flag = function(cb) {
+  Project.prototype.flag = function() {
     console.log ('this in flag: ', this);
     return Project.get({ id: this.id }, function(project) {
       Project.update({ id: project.id }, { flagged: !project.flagged });
+      $location.path('/');
     });
   };
 
