@@ -1,34 +1,30 @@
-<input type="text" ng-model="search" class="search-query" placeholder="Search"><br><br>
-<table class="table table-bordered table-striped">
-  <thead>
-  <tr>
-    <th>Thumbnails</th>
-    <th>Photos</th>
-    <th><a href="#/new"><i class="icon-plus-sign"></i></a></th>
-  </tr>
-  </thead>
-  <tbody>
-  <tr ng-repeat="project in projects | filter:search">
-    <td>
-      &nbsp; {{project.name}} &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-      <img style="max-width:190px; max-height:190px" ng-src="{{project.photo_url}}"/>
-    </td>
-    <td>
-      <a href="{{project.photo_url}}" target="_blank">Full Photo</a>
-      <br>
-      Photo URL: {{project.photo_url}}
-      <br>
-      Likes: {{project.likes}}
-      <br>
-      Flagged: {{project.flagged}}
-      <br>
-      Published: {{project.published}}
-      <!-- <br>
-      <a href="{{project.movie_url}}" target="_blank">{{project.movie_url}}</a> -->
-    </td>
-    <td>
-      <a href="#/edit/{{project.id}}"><i class="icon-pencil"></i>  Details</a>
-    </td>
-  </tr>
-  </tbody>
-</table>
+<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="css/thumbnail-gallery.css" rel="stylesheet">
+
+<body class="page">
+  <input type="text" ng-model="search" class="search-query" placeholder="Search">
+  &nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="#/new"><i class="icon-plus-sign"></i></a>
+  <br><br>
+
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-3 col-md-4 col-xs-6 thumb" ng-repeat="project in projects | filter:search">
+          <a class="thumbnail" href="#/edit/{{project.id}}">
+            <img class="img-responsive" style="max-width:370px; max-height:370px" ng-src="{{project.photo_url}}">
+            {{project.name}}
+            <br>
+            <a href="{{project.photo_url}}" target="_blank">Full Photo</a>
+            <br>
+            Likes: {{project.likes}}
+            <br>
+            Published: {{project.published}}
+            <br>
+            Flagged: {{project.flagged}}
+            <br>
+            <a href="#/edit/{{project.id}}"><i class="icon-pencil"></i>  Details</a>
+          </a>
+      </div>
+    </div>
+  </div>
+</body>

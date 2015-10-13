@@ -2,10 +2,10 @@ require 'sequel'
 require 'json'
 
 # Sqlite Memory Database
-DB = Sequel.sqlite('projects.db')
+DB = Sequel.sqlite('media.db')
 
 # create an items table
-DB.create_table :projects do
+DB.create_table :media do
   primary_key :id
   String :name
   String :photo_url
@@ -17,7 +17,7 @@ DB.create_table :projects do
   Boolean :published
   Boolean :flagged
   Date :created_at
-end unless DB.table_exists?(:projects)
+end unless DB.table_exists?(:media)
 
 # 1. read the file
 json = JSON.parse(File.read('content.json'))
@@ -33,5 +33,5 @@ json['feed'].each do |content|
     movie_url: content['path_prefix'] + content['media_key'] + 'movie.mp4',
     created_at: content['create_e']
   }
-  DB[:projects].insert(data)
+  DB[:media].insert(data)
 end

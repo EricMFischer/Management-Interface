@@ -75,7 +75,7 @@ get '/projects/:id' do |id|
   DB[:projects].where(id: id).first.to_json
 end
 
-# for published and flagged operations, and also general updates
+# for published and flagged operations and also general updates
 put '/projects/:id' do |id|
   allowedParams = params.select do |k,v|
     ['published','flagged','name','photo_url','thumbnail_url','movie_url'].include?(k)
