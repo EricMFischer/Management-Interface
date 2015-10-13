@@ -2,8 +2,6 @@ app.controller('EditProject', function($scope, $rootScope, $location, $routePara
 
   var self = this;
 
-  console.log('EP projects: ', Project.prototype.projects);
-
   Project.get({id: $routeParams.id}, function(project) {
     self.original = project;
     $scope.project = new Project(self.original);

@@ -33,13 +33,13 @@ app.factory('Project', function($resource){
 
   Project.prototype.publish = function(cb) {
     return Project.get({ id: this.id }, function(project) {
-      Project.update({ id: project.id }, { published: true });
+      Project.update({ id: project.id }, { published: !project.published });
     });
   };
 
   Project.prototype.flag = function(cb) {
     return Project.get({ id: this.id }, function(project) {
-      Project.update({ id: project.id }, { flagged: true });
+      Project.update({ id: project.id }, { flagged: !project.flagged });
     });
   };
 
