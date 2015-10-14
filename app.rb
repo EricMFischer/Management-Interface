@@ -3,14 +3,18 @@ require 'rack/post-body-to-params'
 require 'sequel'
 require 'active_support'
 require 'json'
-# rack provides an interface between Ruby web frameworks like
-# Sinatra and the actual webserver like WEBrick or Thin
+# To build a JSON API without Rails, I needed Rack to parse the
+# body of JSON POST/PUT requests into a params hash.
+# Rack provides an interface between Ruby web frameworks like
+# Sinatra and the actual webserver like WEBrick or Thin.
 
-# ActiveSupport provides Ruby language extensions and utilities
+# ActiveSupport provides Ruby language extensions and utilities.
 # It's a wrapper for JSON obj and provides JSON def. for Ruby objs
 # ActiveSupport::JSON.backend = 'Yajl'
 
-# Sqlite Memory Database
+# Sqlite (embedded into app, USB sharing, cross-platform, typeless with 
+# data, and can be used to cache relevant content from enterprise RDBMS)
+# Severless! read/write directly to disk, no IP communication
 DB = Sequel.sqlite('projects.db')
 
 # :symbols are immutable identifiers. bc they are never changed,
@@ -34,6 +38,8 @@ DB.create_table :projects do
 end unless DB.table_exists?(:projects)
 
 # builds params hash from HTTP request
+# The params come from the user's browser when they request the page. 
+# For an HTTP GET request, the params are encoded in the url. 
 use Rack::PostBodyToParams
 
 # where static files should be served from --> './public'
@@ -58,7 +64,6 @@ end
 
 # last line before 'end' acts as return statement
 post '/projects' do
-  puts params.inspect
   data = { 
     name: params[:name], 
     photo_url: params[:photo_url], 

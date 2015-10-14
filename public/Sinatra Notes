@@ -1,4 +1,0 @@
-Sinatra Notes
-
-Why not use Rails to move data around?
-Rails not only retrieves data, but it renders the view as well. This rendering process puts an extra load on the server, especially when the data is highly dynamic and cannot be cached. If data continuously changes, it's better to let clients render their own view rather than forcing the server to re-render the view each time information changes.

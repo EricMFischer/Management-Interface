@@ -4,10 +4,8 @@ app.controller('EditProject', function($scope, $rootScope, $location, $routePara
 
   Project.get({id: $routeParams.id}, function(project) {
     self.original = project;
-    console.log('self.original: ', self.original);
+    // as a new project, it has 6 actions attached to it and also the 4 methods that are defined in projects.js
     $scope.project = new Project(self.original);
-    console.log('$scope.project: ', $scope.project);
-
   });
 
   $scope.isClean = function() {
@@ -15,6 +13,7 @@ app.controller('EditProject', function($scope, $rootScope, $location, $routePara
   }
 
   $scope.destroy = function() {
+    // only fn where we destroy self.original
     self.original.destroy(function() {
       $location.path('/');
     });

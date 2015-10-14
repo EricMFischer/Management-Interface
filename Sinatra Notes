@@ -16,4 +16,4 @@ Sinatra: there is little MVC, no ORM database wrapper, and routes and controller
 The ability to mount Sinatra apps inside Rails 3 apps gives you the best of both worlds. Many people are embedding Sinatra apps inside Rails apps. This mimics the design of the Django framework, where an app consists of many smaller apps.
 
 Why not use Rails to move data around?
-Rails not only retrieves data, but it renders the view as well. This puts an extra load on the server, especially when the data is highly dynamic and cannot be cached. If the data continuously changes, it's better to let clients render their own view rather than forcing the server to re-render each time.
+Rails not only retrieves data, but it renders the view as well. This puts an extra load on the server, especially when the data is highly dynamic and cannot be cached. If the data continuously changes, it's better to let clients render their own view rather than force the server to re-render each time.
