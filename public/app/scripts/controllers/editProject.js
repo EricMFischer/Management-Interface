@@ -4,7 +4,10 @@ app.controller('EditProject', function($scope, $rootScope, $location, $routePara
 
   Project.get({id: $routeParams.id}, function(project) {
     self.original = project;
+    console.log('self.original: ', self.original);
     $scope.project = new Project(self.original);
+    console.log('$scope.project: ', $scope.project);
+
   });
 
   $scope.isClean = function() {

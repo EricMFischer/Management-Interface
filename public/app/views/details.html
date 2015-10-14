@@ -1,36 +1,36 @@
 <link href="css/thumbnail-gallery.css" rel="stylesheet">
 
 <body>
-<form name="myForm" class="offset4 span4">
-  <div class="control-group" ng-class="{error: myForm.name.$invalid}">
-    <label>Name</label>
-    <input type="text" name="name" ng-model="project.name">
-  </div>
+  <form name="myForm" class="offset4 span4">
+    <div class="control-group" ng-class="{error: myForm.name.$invalid}">
+      <label>Name</label>
+      <input type="text" name="name" ng-model="project.name">
+    </div>
 
-  <div class="control-group" ng-class="{error: myForm.thumbnail_url.$invalid}">
-    <label>Thumbnail URL</label>
-    <input type="url" name="thumbnail_url" ng-model="project.thumbnail_url">
-  </div>
- 
-  <div class="control-group" ng-class="{error: myForm.photo_url.$invalid}">
-    <label>Photo URL</label>
-    <input type="url" name="photo_url" ng-model="project.photo_url">
-  </div>
+    <div class="control-group" ng-class="{error: myForm.thumbnail_url.$invalid}">
+      <label>Thumbnail URL</label>
+      <input type="url" name="thumbnail_url" ng-model="project.thumbnail_url">
+    </div>
+   
+    <div class="control-group" ng-class="{error: myForm.photo_url.$invalid}">
+      <label>Photo URL</label>
+      <input type="url" name="photo_url" ng-model="project.photo_url">
+    </div>
 
-  <a href="#/" class="btn">Back</a>
-  <button class="btn btn-primary" ng-click="save()" ng-disabled="isClean() || myForm.$invalid">Save</button>
-  <button class="btn btn-success" ng-click="publish()" ng-disabled="myForm.$invalid">Publish</button>
-  <br><br>
-  <button class="btn btn-info" ng-click="flag()">Flag</button>
-  <button class="btn btn-danger" ng-click="destroy()">Delete</button>
+    <a href="#/" class="btn">Back</a>
+    <button class="btn btn-primary" ng-click="save()" ng-disabled="isClean() || myForm.$invalid">Save</button>
+    <button class="btn btn-success" ng-click="publish()" ng-disabled="myForm.$invalid">Publish</button>
+    <br><br>
+    <button class="btn btn-info" ng-click="flag()">Flag</button>
+    <button class="btn btn-danger" ng-click="destroy()">Delete</button>
 
-  <br><br>
-  Likes: {{project.likes}}
-  <br>
-  Published: {{project.published}}
-  <br>
-  Flagged: {{project.flagged}}
-  <br><br>
-  <div style="border:1px solid black"><img ng-src="{{project.photo_url}}"></div>
-</form>
+    <br><br>
+    Likes: {{project.likes}}
+    <br>
+    Published: {{project.published}}
+    <br>
+    Flagged: {{project.flagged}}
+    <br><br>
+    <div style="border:1px solid black"><img ng-src="{{project.photo_url}}"></div>
+  </form>
 </body>
