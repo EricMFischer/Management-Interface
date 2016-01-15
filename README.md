@@ -1,4 +1,4 @@
-# Yeti Campus Stories - Management Interface
+# Management interface example
 
 CRUD application created with Ruby/Sinatra and AngularJS.
 
